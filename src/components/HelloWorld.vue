@@ -39,6 +39,13 @@ export default Vue.extend({
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    test () {
+      if (this.msg) {
+        alert(this.msg)
+      }
+    }
   }
 })
 </script>

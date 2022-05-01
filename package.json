@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "nyc vue-cli-service test:unit",
     "coverage": "coverage=true nyc --reporter=lcov --reporter=text vue-cli-service test:unit",
+    "coverage:all": "coverage=true nyc --all --reporter=lcov --reporter=text vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
