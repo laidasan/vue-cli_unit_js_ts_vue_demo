@@ -1,6 +1,5 @@
 const defaultExclude = require('@istanbuljs/schema/default-exclude')
 const defaultExtension = require('@istanbuljs/schema/default-extension')
-
 module.exports = {
   cache: false,
   sourceMap: false,
@@ -12,9 +11,16 @@ module.exports = {
     ...defaultExtension,
     '.vue'
   ],
+
   exclude: [
     ...defaultExclude,
     'vue.config.js',
-    '**/*.spec.{ts,js}'
+    '**/*.spec.{ts,js}',
+    'src/base/nyc/index.js'
+  ],
+
+  require: [
+    '@babel/register',
+    './src/base/nyc/index.js' // 修復 babel-register
   ]
 }

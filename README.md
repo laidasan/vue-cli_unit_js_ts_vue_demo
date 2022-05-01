@@ -9,9 +9,40 @@
 # unit test demo
 此專案為 unit test demo, 使用
 * 測試: vue-cli + @vue/cli-plugin-unit-mocha + chai
-* 覆蓋率: nyc  
+* 覆蓋率: nyc(產生報表) + babel-plugin-istanbul(計算覆蓋率)
+    
+## Note: 
+* 可以使用 npx vue-cli-service inspect 來查看目前 webpack config 設置
+```
+npx vue-cli-service inspect --rule ts
+```
+
+* @vue/cli-plugin-unit-mocha 底層是使用 [mochapack](https://github.com/sysgears/mochapack)
   
-Note: @vue/cli-plugin-unit-mocha 底層是使用 [mochapack](https://github.com/sysgears/mochapack)
+* ts 的檔案過 ts-loader 時, options complierOptions.sourceMap 一定要是 true, 否則產生的覆蓋率報表, 查看未覆蓋的 code 時會有誤差
+  
+* ts-loader 設置中, 若要對 ts 撰寫的 SFC (.vue) 編譯 , options 要加上 
+```javascript
+options: {
+  appendTsSuffixTo: [ '\\.vue$'],
+}
+```
+
+* vue-cli vue.config.js ts-loader options 預設設置為
+```
+options: {
+  transpileOnly: true,
+  appendTsSuffixTo: [
+    '\\.vue$'
+  ],
+  happyPackMode: false
+}
+```
+
+## 文章
+在查找資料閱讀了很多 issue 與 文章, 這邊分享些還不錯的
+* https://testerhome.com/topics/24122
+
 
 ## Project setup
 ```
